@@ -5,6 +5,7 @@ test.only("New user full e2e test journey", async ({ page }) => {
 
     const productsPage = new ProductsPage(page)
     await productsPage.visit()
-    // await page.pause()
+    await page.pause()
+    await productsPage.visit() // to be deleted
     
 })
