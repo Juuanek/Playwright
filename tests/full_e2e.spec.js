@@ -8,6 +8,7 @@ test.only("New user full e2e test journey", async ({ page }) => {
     await productsPage.addProductToBasket(0)
     await productsPage.addProductToBasket(1)
     await productsPage.addProductToBasket(2)
+    
 
     // await page.pause()
     
