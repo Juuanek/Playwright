@@ -15,6 +15,7 @@ test.only("New user full e2e test journey", async ({ page }) => {
     await page.pause()
     
 
-    // await page.pause()
+    await page.pause()
+    check
     
 })
