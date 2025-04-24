@@ -4,6 +4,7 @@ import { expect } from "@playwright/test"
         constructor(page) {
             this.page = page;
             this.basketCounter = page.locator('[data-qa="header-basket-count"]')
+            this.checkOutLink = this.page.getByRole('link', { name: 'Checkout' })
         }
         
         getBasketCount = async () => {
@@ -14,4 +15,11 @@ import { expect } from "@playwright/test"
             const asNumber = parseInt(text, 10)
             return asNumber
             } 
+
+        goToCheckout = async () => {
+            
+            await this.checkOutLink.waitFor()
+            await this.checkOutLink.click()
+            await this.page.waitForURL("/basket")
+        }
     }
