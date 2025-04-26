@@ -12,6 +12,8 @@ test.only("New user full e2e test journey", async ({ page }) => {
 
     const navigation = new Navigation(page)
     await navigation.goToCheckout()
+    await navigation.goToCheckout()
+
     await page.pause()
     
 
