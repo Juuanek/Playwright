@@ -1,6 +1,7 @@
 import { test } from "@playwright/test"
 import { ProductsPage } from "../page-objects/ProductsPage"
 import { Navigation } from "../page-objects/Navigation"
+import { Checkout } from "../page-objects/Checkout"
 
 test.only("New user full e2e test journey", async ({ page }) => {
 
@@ -12,11 +13,9 @@ test.only("New user full e2e test journey", async ({ page }) => {
 
     const navigation = new Navigation(page)
     await navigation.goToCheckout()
-    await navigation.goToCheckout()
 
-    await page.pause()
-    
+    const checkout = new Checkout(page)
+    await checkout.removeCheapestProduct()
 
-    // await page.pause()
     
 })
