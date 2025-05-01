@@ -20,10 +20,24 @@ export class Checkout {
         console.warn({element})
 
        })
-       console.warn({allPriceTexts})
-       console.log({justNumbers})
-       await this.page.pause()
+       const smallestPrice = Math.min(...justNumbers)
+       console.log("smallest price is" + smallestPrice)
+       const indexOfSmallestPrice = justNumbers.indexOf(smallestPrice)
+       console.log("Inex of smallest pirce is" + indexOfSmallestPrice)
+       const removingLowest = this.page.getByRole('button', { name: 'Remove from basket' }).nth(indexOfSmallestPrice)
+       removingLowest.waitFor()
+       await removingLowest.click()
+       console.log("The remove button was clicked on the lowest price item")
+    
+    }
 
+    countOfProductsInBasket = async () => {
+        const itemsBeforeRemoval = await this.basketCards.count()
 
+       console.log("Products in basket = " + itemsBeforeRemoval)
+    //    await this.page()
+    //    await this.page()
+
+    
     }
 }
