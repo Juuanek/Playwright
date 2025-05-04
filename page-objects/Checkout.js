@@ -17,7 +17,6 @@ export class Checkout {
        const justNumbers = allPriceTexts.map((element) => {
         const withoutDollarSign = element.replace("$","")
         return parseInt(withoutDollarSign, 10)
-        console.warn({element})
 
        })
        const smallestPrice = Math.min(...justNumbers)
@@ -35,8 +34,6 @@ export class Checkout {
         const itemsBeforeRemoval = await this.basketCards.count()
 
        console.log("Products in basket = " + itemsBeforeRemoval)
-    //    await this.page()
-    //    await this.page()
 
     
     }
