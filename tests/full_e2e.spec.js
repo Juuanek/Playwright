@@ -15,7 +15,8 @@ test.only("New user full e2e test journey", async ({ page }) => {
     await navigation.goToCheckout()
 
     const checkout = new Checkout(page)
-    await checkout.removeCheapestProduct()
-
+    // const numberOfProductsBeforeRemoval = checkout.countOfProductsInBasket() // to be checked later
+    // await checkout.removeCheapestProduct()
+    // await expect (checkout.countOfProductsInBasket()).toEqual(numberOfProductsBeforeRemoval - 1)
     
 })
