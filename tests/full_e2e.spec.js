@@ -28,8 +28,19 @@ test("New user full e2e test journey", async ({ page }) => {
     expect(before).not.toEqual(after);
     })
 
-    test.only("dropdowns", async ({ page }) => {
+    test("dropdowns", async ({ page }) => {
         const productsPage = new ProductsPage(page)
         await productsPage.visit()
         await productsPage.sortByCheapest();
+    })
+    test.only("continoue to checkout", async ({ page }) => {
+        const productsPage = new ProductsPage(page)
+        await productsPage.visit()
+        const navigation = new Navigation(page)
+        await navigation.goToCheckout()
+        const checkout = new Checkout(page)
+        await checkout.continueToCheckout()
+
+        
+
     })
