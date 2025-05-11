@@ -3,9 +3,11 @@ import { ProductsPage } from "../page-objects/ProductsPage"
 import { Navigation } from "../page-objects/Navigation"
 import { Checkout } from "../page-objects/Checkout"
 
-test.only("New user full e2e test journey", async ({ page }) => {
 
+
+test("New user full e2e test journey", async ({ page }) => {
     const productsPage = new ProductsPage(page)
+
     await productsPage.visit()
     await productsPage.addProductToBasket(0)
     await productsPage.addProductToBasket(1)
@@ -24,4 +26,10 @@ test.only("New user full e2e test journey", async ({ page }) => {
     console.log("before= " + before)
     console.log("after= " + after)
     expect(before).not.toEqual(after);
+    })
+
+    test.only("dropdowns", async ({ page }) => {
+        const productsPage = new ProductsPage(page)
+        await productsPage.visit()
+        await productsPage.sortByCheapest();
     })
