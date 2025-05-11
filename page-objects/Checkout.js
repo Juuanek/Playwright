@@ -30,11 +30,26 @@ export class Checkout {
     
     }
 
-    countOfProductsInBasket = async () => {
+    countOfProductsInBasketBefore = async () => {
         const itemsBeforeRemoval = await this.basketCards.count()
+        // console.log("Products in basket before= " + itemsBeforeRemoval) // debug
+        return itemsBeforeRemoval
 
-       console.log("Products in basket = " + itemsBeforeRemoval)
+       
 
     
+    }
+    countOfProductsInBasketAfter = async () => {
+        const itemsAfterRemoval = await this.basketCards.count()
+        // console.log("Products in basket after= " + itemsAfterRemoval) // debug
+        return itemsAfterRemoval;
+    }
+    checkIfProductRemoved = async () => {
+        while(true){
+            const count = await this.basketCards.count();
+            if (count < 3) {
+                return count;
+            }
+    }
     }
 }

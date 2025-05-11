@@ -1,4 +1,4 @@
-import { test } from "@playwright/test"
+import { test, expect } from "@playwright/test"
 import { ProductsPage } from "../page-objects/ProductsPage"
 import { Navigation } from "../page-objects/Navigation"
 import { Checkout } from "../page-objects/Checkout"
@@ -15,8 +15,13 @@ test.only("New user full e2e test journey", async ({ page }) => {
     await navigation.goToCheckout()
 
     const checkout = new Checkout(page)
-    // const numberOfProductsBeforeRemoval = checkout.countOfProductsInBasket() // to be checked later
-    // await checkout.removeCheapestProduct()
-    // await expect (checkout.countOfProductsInBasket()).toEqual(numberOfProductsBeforeRemoval - 1)
+    const before = await checkout.countOfProductsInBasketBefore();
+
+    await checkout.removeCheapestProduct();
+    await checkout.checkIfProductRemoved();
+    const after = await checkout.countOfProductsInBasketAfter();
     
-})
+    console.log("before= " + before)
+    console.log("after= " + after)
+    expect(before).not.toEqual(after);
+    })
