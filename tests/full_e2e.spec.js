@@ -40,7 +40,7 @@ test("New user full e2e test journey", async ({ page }) => {
         await navigation.goToCheckout()
         const checkout = new Checkout(page)
         await checkout.continueToCheckout()
-
+        await loginPage.register()
         
 
     })
