@@ -7,6 +7,6 @@ export class LoginPage {
     register = async () => {
         await this.registerButton.waitFor()
         await this.registerButton.click()
-        await this.page.pause()
+        // await this.page.pause()
     }
 }
