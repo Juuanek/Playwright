@@ -2,6 +2,7 @@ import { test, expect } from "@playwright/test"
 import { ProductsPage } from "../page-objects/ProductsPage"
 import { Navigation } from "../page-objects/Navigation"
 import { Checkout } from "../page-objects/Checkout"
+import { LoginPage } from "../page-objects/loginPage"
 
 
 
@@ -36,10 +37,14 @@ test("New user full e2e test journey", async ({ page }) => {
     test.only("continoue to checkout", async ({ page }) => {
         const productsPage = new ProductsPage(page)
         await productsPage.visit()
+
         const navigation = new Navigation(page)
         await navigation.goToCheckout()
+
         const checkout = new Checkout(page)
         await checkout.continueToCheckout()
+
+        const loginPage = new LoginPage(page)
         await loginPage.register()
         
 
