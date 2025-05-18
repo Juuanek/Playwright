@@ -5,6 +5,7 @@ import { Navigation } from "../page-objects/Navigation"
 import { Checkout } from "../page-objects/Checkout"
 import { LoginPage } from "../page-objects/loginPage"
 import { RegisterPage } from "../page-objects/RegisterPage"
+import { DeliveryDetails } from "../page-objects/DeliveryDetails"
 
 
 
@@ -53,6 +54,10 @@ test("New user full e2e test journey", async ({ page }) => {
         const email = uuidv4() + "@gmail.com"
         const password = uuidv4()
         await registerPage.signUpAsNewUser(email, password)
+
+        const deliveryDetails = new DeliveryDetails(page)
+        await deliveryDetails.fillDetails()
+        await page.pause()
         
 
     })

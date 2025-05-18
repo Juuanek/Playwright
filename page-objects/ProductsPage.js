@@ -35,6 +35,5 @@ export class ProductsPage {
         await this.sortDropdown.selectOption("price-asc")
         const allProductTitlesAfterSorting = await this.productTitles.allInnerTexts()
         expect (allProductsBeforeSorting).not.toEqual(allProductTitlesAfterSorting)
-        // await this.page.pause();
     }
 }
