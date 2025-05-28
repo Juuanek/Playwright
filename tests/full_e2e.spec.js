@@ -6,6 +6,7 @@ import { Checkout } from "../page-objects/Checkout"
 import { LoginPage } from "../page-objects/loginPage"
 import { RegisterPage } from "../page-objects/RegisterPage"
 import { DeliveryDetails } from "../page-objects/DeliveryDetails"
+import { DeliveryDetailsData } from "../data/DeliveryDetailsData"
 
 
 
@@ -56,8 +57,6 @@ test("New user full e2e test journey", async ({ page }) => {
         await registerPage.signUpAsNewUser(email, password)
 
         const deliveryDetails = new DeliveryDetails(page)
-        await deliveryDetails.fillDetails()
-        await page.pause()
-        
+        await deliveryDetails.fillDetails(DeliveryDetailsData)
 
     })

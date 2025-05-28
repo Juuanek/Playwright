@@ -1,3 +1,5 @@
+import { DeliveryDetailsData } from "../data/DeliveryDetailsData"
+
 export class DeliveryDetails {
     constructor(page) {
         this.page = page
@@ -11,21 +13,21 @@ export class DeliveryDetails {
 
     fillDetails = async () =>  {
         await this.firstName.waitFor()
-        await this.firstName.fill('Johny')
+        await this.firstName.fill(DeliveryDetailsData.firstName)
 
         await this.lastName.waitFor()
-        await this.lastName.fill('Deep')
+        await this.lastName.fill(DeliveryDetailsData.lastName)
 
         await this.street.waitFor()
-        await this.street.fill('Cabeza')
+        await this.street.fill(DeliveryDetailsData.street)
 
         await this.postCode.waitFor()
-        await this.postCode.fill('12345')
+        await this.postCode.fill(DeliveryDetailsData.postCode)
         
         await this.city.waitFor()
-        await this.city.fill('Zurich')
+        await this.city.fill(DeliveryDetailsData.city)
 
         await this.countryDropdown.waitFor()
-        await this.countryDropdown.selectOption('Poland')
+        await this.countryDropdown.selectOption(DeliveryDetailsData.countryDropdown)
     }
 }

@@ -1,0 +1,8 @@
+export const DeliveryDetailsData = {
+    firstName: "Johny",
+    lastName: "Deep",
+    street: "Cabeza",
+    postCode: "42-550",
+    city: "Zurich",
+    countryDropdown: "Poland"
+}
