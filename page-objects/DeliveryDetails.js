@@ -12,6 +12,7 @@ export class DeliveryDetails {
         this.countryDropdown = page.locator('[data-qa="country-dropdown"]')
         this.savedAdressButton = page.getByRole('button', { name: 'Save address for next time' })
         this.savedAdressData = page.getByText('JohnyDeepCabeza42-550ZurichPoland')
+        this.countOfDataSaved = page.locator('[data-qa="saved-address-container"]')
     }
 
     fillDetails = async () =>  {
@@ -35,9 +36,17 @@ export class DeliveryDetails {
     }
 
     saveAdress = async () => {
+        const countBeforeSaving = await (this.countOfDataSaved).count()
+
         await this.savedAdressButton.waitFor()
         await this.savedAdressButton.click()
+
+        await this.countOfDataSaved.waitFor()
+
+        const countAfterSaving = await (this.countOfDataSaved).count()
+
         const savedAdressText = this.savedAdressData
         await expect(this.savedAdressData).toEqual(savedAdressText)
+        await expect(countBeforeSaving).toEqual(countAfterSaving - 1)
     }
 }
