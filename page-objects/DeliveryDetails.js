@@ -13,6 +13,7 @@ export class DeliveryDetails {
         this.savedAdressButton = page.getByRole('button', { name: 'Save address for next time' })
         this.savedAdressData = page.getByText('JohnyDeepCabeza42-550ZurichPoland')
         this.countOfDataSaved = page.locator('[data-qa="saved-address-container"]')
+        this.goToPaymentButton = page.getByRole('button', { name: 'Continue to payment' })
     }
 
     fillDetails = async () =>  {
@@ -48,5 +49,10 @@ export class DeliveryDetails {
         const savedAdressText = this.savedAdressData
         await expect(this.savedAdressData).toEqual(savedAdressText)
         await expect(countBeforeSaving).toEqual(countAfterSaving - 1)
+    }
+    goToPayment = async ()=> {
+        await this.goToPaymentButton.waitFor()
+        await this.goToPaymentButton.click()
+        await this.page.waitForURL(/\/payment/)
     }
 }

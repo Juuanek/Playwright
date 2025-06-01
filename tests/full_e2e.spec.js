@@ -59,5 +59,6 @@ test("New user full e2e test journey", async ({ page }) => {
         const deliveryDetails = new DeliveryDetails(page)
         await deliveryDetails.fillDetails(DeliveryDetailsData)
         await deliveryDetails.saveAdress()
+        await deliveryDetails.goToPayment()
 
     })
