@@ -7,6 +7,7 @@ import { LoginPage } from "../page-objects/loginPage"
 import { RegisterPage } from "../page-objects/RegisterPage"
 import { DeliveryDetails } from "../page-objects/DeliveryDetails"
 import { DeliveryDetailsData } from "../data/DeliveryDetailsData"
+import { PaymentPage } from "../page-objects/PaymentPage"
 
 
 
@@ -60,5 +61,8 @@ test("New user full e2e test journey", async ({ page }) => {
         await deliveryDetails.fillDetails(DeliveryDetailsData)
         await deliveryDetails.saveAdress()
         await deliveryDetails.goToPayment()
+
+        const paymentPage = new PaymentPage(page)
+        await paymentPage.activateDiscount()
 
     })
