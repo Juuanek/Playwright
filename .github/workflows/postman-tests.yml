@@ -23,5 +23,5 @@ jobs:
 
       - name: Run Postman Collection
         run: |
-          newman run postman/Integration with github actions.postman_collection.json \
+          newman run postman/collection.json \
             
