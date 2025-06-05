@@ -1,0 +1,32 @@
+{
+	"info": {
+		"_postman_id": "22a97c3b-46c1-45c3-a718-de91aeb0ab43",
+		"name": "Integration with github actions",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43285670"
+	},
+	"item": [
+		{
+			"name": "some request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2221/_next/static/bxnl6CCI7j3gvsgK_xiGw/_ssgManifest.js",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2221",
+					"path": [
+						"_next",
+						"static",
+						"bxnl6CCI7j3gvsgK_xiGw",
+						"_ssgManifest.js"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
