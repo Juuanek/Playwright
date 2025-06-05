@@ -23,5 +23,5 @@ jobs:
 
       - name: Run Postman Collection
         run: |
-          newman run postman/collection.json \
+          newman run collection.json \
             
