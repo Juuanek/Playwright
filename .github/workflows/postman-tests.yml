@@ -18,10 +18,20 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install Newman
-        run: npm install -g newman
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Newman and wait-on
+        run: npm install -g newman wait-on
+
+      - name: Start application in background
+        run: |
+          node shopping-store-mac-arm64 &
+
+      - name: Wait for application to be ready
+        run: |
+          wait-on http://localhost:2221  # Replace with your app's real URL
 
       - name: Run Postman Collection
         run: |
-          newman run collection.json \
-            
+          newman run collection.json
