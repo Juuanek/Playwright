@@ -8,6 +8,7 @@ import { RegisterPage } from "../page-objects/RegisterPage"
 import { DeliveryDetails } from "../page-objects/DeliveryDetails"
 import { DeliveryDetailsData } from "../data/DeliveryDetailsData"
 import { PaymentPage } from "../page-objects/PaymentPage"
+import { PaymentPageData } from "../data/PaymentPageData"
 
 
 
@@ -30,8 +31,8 @@ test.only("New user full e2e test journey", async ({ page }) => {
     await checkout.checkIfProductRemoved();
     const after = await checkout.countOfProductsInBasketAfter();
     
-    console.log("before= " + before)
-    console.log("after= " + after)
+    // console.log("before= " + before) // Debug
+    // console.log("after= " + after) // Debug
     expect(before).not.toEqual(after);
 
     
@@ -52,6 +53,8 @@ test.only("New user full e2e test journey", async ({ page }) => {
 
     const paymentPage = new PaymentPage(page)
     await paymentPage.activateDiscount()
+    await paymentPage.fillPaymentDetails(PaymentPageData)
+    await page.pause()
     })
 
     

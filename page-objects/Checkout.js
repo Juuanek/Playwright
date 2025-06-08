@@ -21,13 +21,13 @@ export class Checkout {
 
        })
        const smallestPrice = Math.min(...justNumbers)
-       console.log("smallest price is" + smallestPrice)
+    //    console.log("smallest price is" + smallestPrice) // Debug
        const indexOfSmallestPrice = justNumbers.indexOf(smallestPrice)
-       console.log("Inex of smallest pirce is" + indexOfSmallestPrice)
+    //    console.log("Inex of smallest pirce is" + indexOfSmallestPrice) // Debug
        const removingLowest = this.page.getByRole('button', { name: 'Remove from basket' }).nth(indexOfSmallestPrice)
        removingLowest.waitFor()
        await removingLowest.click()
-       console.log("The remove button was clicked on the lowest price item")
+    //    console.log("The remove button was clicked on the lowest price item") // Debug
     
     }
 
