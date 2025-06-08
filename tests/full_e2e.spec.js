@@ -11,10 +11,11 @@ import { PaymentPage } from "../page-objects/PaymentPage"
 
 
 
-test("New user full e2e test journey", async ({ page }) => {
+test.only("New user full e2e test journey", async ({ page }) => {
     const productsPage = new ProductsPage(page)
 
     await productsPage.visit()
+    await productsPage.sortByCheapest();
     await productsPage.addProductToBasket(0)
     await productsPage.addProductToBasket(1)
     await productsPage.addProductToBasket(2)
@@ -32,14 +33,41 @@ test("New user full e2e test journey", async ({ page }) => {
     console.log("before= " + before)
     console.log("after= " + after)
     expect(before).not.toEqual(after);
+
+    
+    await checkout.continueToCheckout()
+
+    const loginPage = new LoginPage(page)
+    await loginPage.register()
+
+    const registerPage = new RegisterPage(page)
+    const email = uuidv4() + "@gmail.com"
+    const password = uuidv4()
+    await registerPage.signUpAsNewUser(email, password)
+
+    const deliveryDetails = new DeliveryDetails(page)
+    await deliveryDetails.fillDetails(DeliveryDetailsData)
+    await deliveryDetails.saveAdress()
+    await deliveryDetails.goToPayment()
+
+    const paymentPage = new PaymentPage(page)
+    await paymentPage.activateDiscount()
     })
 
+    
+    
+    
+    
+    
+    
+    
+    
     test("dropdowns", async ({ page }) => {
         const productsPage = new ProductsPage(page)
         await productsPage.visit()
         await productsPage.sortByCheapest();
     })
-    test.only("continoue to checkout", async ({ page }) => {
+    test("continoue to checkout", async ({ page }) => {
         const productsPage = new ProductsPage(page)
         await productsPage.visit()
 
