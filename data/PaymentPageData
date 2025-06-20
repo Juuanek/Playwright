@@ -1,6 +1,6 @@
 export const PaymentPageData = {
-    cardOwner: "John",
+    cardOwner: "John Doe",
     cardNumber: "1010123409874567",
     validUntill: "10/28",
-    cvc: "H2I",
+    cvc: "342",
 }

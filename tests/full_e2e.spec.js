@@ -54,7 +54,7 @@ test.only("New user full e2e test journey", async ({ page }) => {
     const paymentPage = new PaymentPage(page)
     await paymentPage.activateDiscount()
     await paymentPage.fillPaymentDetails(PaymentPageData)
-    await page.pause()
+    await paymentPage.clickPayButton()
     })
 
     

@@ -14,6 +14,7 @@ export class PaymentPage {
         this.cardNumberIntup = page.locator('[data-qa="credit-card-number"]')
         this.validUntilInput = page.locator('[data-qa="valid-until"]')
         this.cvcInput = page.locator('[data-qa="credit-card-cvc"]')
+        this.payButton = page.locator('[data-qa="pay-button"]')
 
     }
 
@@ -55,6 +56,12 @@ export class PaymentPage {
         await this.cvcInput.waitFor()
         await this.cvcInput.fill(PaymentPageData.cvc)
 
+    }
+
+    clickPayButton = async () => {
+        await this.payButton.waitFor()
+        await this.payButton.click()
+        expect(await this.page.waitForURL(/\/thank-you/))
     }
 
     }
