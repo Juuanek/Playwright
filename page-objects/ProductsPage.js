@@ -1,6 +1,11 @@
 import { expect } from "@playwright/test"
 import { Navigation } from "./Navigation.js"
 
+const isDesktopViewport = (page) => {
+    const size = page.viewportSize()
+    return size.width >= 600
+}
+
 export class ProductsPage {
     constructor(page) {
         this.page = page;
@@ -21,11 +26,19 @@ export class ProductsPage {
         await specificButton.waitFor()
         await expect (specificButton).toHaveText("Add to Basket")
         const navigation = new Navigation(this.page)
-        const basketCountBeforeAdding = await navigation.getBasketCount()
+        let basketCountBeforeAdding
+        if (isDesktopViewport(this.page)) {
+            basketCountBeforeAdding = await navigation.getBasketCount()
+        }
+        
         await specificButton.click()
         await expect (specificButton).toHaveText("Remove from Basket")
-        const basketCountAfterAdding = await navigation.getBasketCount()
-        expect (basketCountAfterAdding).toBeGreaterThan(basketCountBeforeAdding)
+
+        if (isDesktopViewport(this.page)) {
+            const basketCountAfterAdding = await navigation.getBasketCount()
+            expect (basketCountAfterAdding).toBeGreaterThan(basketCountBeforeAdding)
+        }
+        
 
     }
     sortByCheapest = async () => {

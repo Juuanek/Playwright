@@ -31,8 +31,8 @@ test.only("New user full e2e test journey", async ({ page }) => {
     await checkout.checkIfProductRemoved();
     const after = await checkout.countOfProductsInBasketAfter();
     
-    // console.log("before= " + before) // Debug
-    // console.log("after= " + after) // Debug
+    console.log("before= " + before) // Debug
+    console.log("after= " + after) // Debug
     expect(before).not.toEqual(after);
 
     
