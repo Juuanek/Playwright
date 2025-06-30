@@ -1,5 +1,6 @@
 import { DeliveryDetailsData } from "../data/DeliveryDetailsData"
 import { expect } from "@playwright/test"
+import { timeout } from "../playwright.config"
 
 export class DeliveryDetails {
     constructor(page) {
@@ -41,7 +42,6 @@ export class DeliveryDetails {
 
         await this.savedAdressButton.waitFor()
         await this.savedAdressButton.click()
-
         await this.countOfDataSaved.waitFor()
 
         const countAfterSaving = await (this.countOfDataSaved).count()
